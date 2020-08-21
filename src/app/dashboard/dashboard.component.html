@@ -1,0 +1,259 @@
+<button (click)="logOut()" class="btn btn-default logOutBtn">Logout</button>
+
+<!-- <ng-container>
+  <div class="row">
+    <ng-container *ngIf="fruitList.length > 0">
+      <div *ngFor="let fruit of fruitList" class="col-lg-2">
+        <div class="card" style="width: 18rem;">
+          <div
+            class="img-cont"
+            [ngStyle]="{ 'background-image': imgHandler(fruit) }"
+          ></div>
+          <div class="card-body">
+            <h5 class="card-title">Details: {{ fruit?.document?.name }}</h5>
+            <ul>
+              <li>Name: {{ fruit?.document?.name }}</li>
+              <li>Price: {{ fruit?.document?.price }}/kg</li>
+              <li>Color: {{ fruit?.document?.color }}</li>
+              <li>Harvest Date: {{ fruit?.document?.date }}</li>
+              <li>Quantity: {{ fruit?.document?.quantity }}</li>
+            </ul>
+            <button (click)="deletFruit(fruit)" class="btn btn-primary">
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <div class="col-lg-2">
+      <div class="card" style="width: 18rem;">
+        <img
+          class="card-img-top"
+          src="https://images.unsplash.com/photo-1514995669114-6081e934b693?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+          alt="Card image cap"
+        />
+        <div class="card-body default">
+          <form
+            *ngIf="showFruitForm"
+            id="auth-form"
+            class="form-horizontal"
+            style="max-width: 100%;"
+          >
+            <div class="form-group">
+              <input
+                [(ngModel)]="fruitData.name"
+                type="text"
+                class="form-control"
+                id="name"
+                name="name"
+                placeholder="Fruit Name"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                [(ngModel)]="fruitData.color"
+                type="text"
+                class="form-control"
+                id="color"
+                name="color"
+                placeholder="Fruit Color"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                [(ngModel)]="fruitData.quantity"
+                type="text"
+                class="form-control"
+                id="quantity"
+                name="quantity"
+                placeholder="Fruit Quantity"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                [(ngModel)]="fruitData.price"
+                type="text"
+                class="form-control"
+                id="price"
+                name="price"
+                placeholder="Fruit Price"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                [(ngModel)]="fruitData.date"
+                type="date"
+                class="form-control"
+                id="date"
+                name="date"
+                placeholder="Fruit Harvest Date"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                [(ngModel)]="fruitData.url"
+                type="text"
+                class="form-control"
+                id="text"
+                name="text"
+                placeholder="Fruit Image URL"
+              />
+            </div>
+          </form>
+          <button
+            *ngIf="!showFruitForm"
+            (click)="toggleFruitForm()"
+            class="btn btn-large centeredBtn"
+            id="add-note"
+          >
+            Add a new fruit
+          </button>
+          <button
+            *ngIf="showFruitForm"
+            [disabled]="!fruitData.name"
+            type="button"
+            (click)="saveFruit()"
+            class="btn btn-default"
+          >
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container> -->
+
+<div class="container">
+  <div class="row">
+    <ng-container *ngIf="fruitList.length > 0">
+      <div *ngFor="let fruit of fruitList" class="col-xs-12 col-md-6 col-lg-3">
+        <div class="card">
+          <div
+            class="img-cont"
+            [ngStyle]="{ 'background-image': imgHandler(fruit) }"
+          ></div>
+          <div class="card-block">
+            <h4 class="card-title">Details: {{ fruit?.document?.name }}</h4>
+            <ul>
+              <li>Name: {{ fruit?.document?.name }}</li>
+              <li>Price: {{ fruit?.document?.price }}/kg</li>
+              <li>Color: {{ fruit?.document?.color }}</li>
+              <li>Harvest Date: {{ fruit?.document?.date }}</li>
+              <li>Quantity: {{ fruit?.document?.quantity }}</li>
+            </ul>
+            <button (click)="deletFruit(fruit)" class="btn btn-primary">
+              Delete
+            </button>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted"
+              >Created: {{ fruit?.created_at | date }}</small
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-6 col-lg-3">
+        <div class="card">
+          <div
+            class="img-cont"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1514995669114-6081e934b693?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            "
+          ></div>
+          <div class="card-block default">
+            <h4 class="card-title">Add New Fruits</h4>
+            <form
+              *ngIf="showFruitForm"
+              id="auth-form"
+              class="form-horizontal"
+              style="max-width: 100%;"
+            >
+              <div class="form-group">
+                <input
+                  [(ngModel)]="fruitData.name"
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  name="name"
+                  placeholder="Fruit Name"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  [(ngModel)]="fruitData.color"
+                  type="text"
+                  class="form-control"
+                  id="color"
+                  name="color"
+                  placeholder="Fruit Color"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  [(ngModel)]="fruitData.quantity"
+                  type="text"
+                  class="form-control"
+                  id="quantity"
+                  name="quantity"
+                  placeholder="Fruit Quantity"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  [(ngModel)]="fruitData.price"
+                  type="text"
+                  class="form-control"
+                  id="price"
+                  name="price"
+                  placeholder="Fruit Price"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  [(ngModel)]="fruitData.date"
+                  type="date"
+                  class="form-control"
+                  id="date"
+                  name="date"
+                  placeholder="Fruit Harvest Date"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  [(ngModel)]="fruitData.url"
+                  type="text"
+                  class="form-control"
+                  id="text"
+                  name="text"
+                  placeholder="Fruit Image URL"
+                />
+              </div>
+            </form>
+            <button
+              *ngIf="!showFruitForm"
+              (click)="toggleFruitForm()"
+              class="btn btn-large centeredBtn"
+              id="add-note"
+            >
+              Add a new fruit
+            </button>
+            <button
+              *ngIf="showFruitForm"
+              [disabled]="!fruitData.name"
+              type="button"
+              (click)="saveFruit()"
+              class="btn btn-default"
+            >
+              Save
+            </button>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted"
+              >Created</small
+            >
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
